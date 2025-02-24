@@ -13,7 +13,7 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 manager = DatabaseManager(DATABASE)
 manager.create_tables()
 
-# A command for user registration
+# Perintah untuk user melakukan registrasi
 @bot.command()
 async def start(ctx):
     user_id = ctx.author.id
@@ -23,7 +23,7 @@ async def start(ctx):
         manager.add_user(user_id, ctx.author.name)
         await ctx.send("""Hai! Selamat datang! Kamu telah berhasil terdaftar! Kamu akan menerima gambar baru setiap menit, dan kamu akan memiliki kesempatan untuk mendapatkannya! Untuk melakukan ini, kamu perlu mengklik tombol 'Dapatkan!' Hanya tiga pengguna pertama yang mengklik tombol 'Dapatkan!' yang akan mendapatkan gambar! =)""")
 
-# A scheduled task for sending images
+# Tugas terjadwal untuk mengirim gambar
 @tasks.loop(minutes=1)
 async def send_message():
     for user_id in manager.get_users():
