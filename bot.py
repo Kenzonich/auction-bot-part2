@@ -57,7 +57,7 @@ async def on_interaction(interaction):
 
 @bot.event
 async def on_ready():
-    print(f'Masuk sebagai {bot.user}!')
+    print(f'Logged in as {bot.user}!')
     if not send_message.is_running():
         send_message.start()
 
